@@ -27,5 +27,5 @@ Maybe optimize it later.
 
 ## c
 
-This one is a work in progress
+This one was ported from go but is only single threaded
 

@@ -102,6 +102,12 @@ func (s *Stations) Get(hash uint32, city []byte) (int, *Station) {
 	return index, entry
 }
 
+// Update a station value - this value should already exist
+func (s *Stations) Update(value *Station) {
+	index, _ := s.Get(value.hash, value.city)
+	s.table[index] = value
+}
+
 // Add a new station to the set - this station should not already exist
 // The index should be returned from Get()
 func (s *Stations) Append(index int, st *Station) {
@@ -116,12 +122,6 @@ func (s *Stations) Append(index int, st *Station) {
 			s.Update(station)
 		}
 	}
-}
-
-// Update a station value - this value should already exist
-func (s *Stations) Update(value *Station) {
-	index, _ := s.Get(value.hash, value.city)
-	s.table[index] = value
 }
 
 // Combine the statistics of several sets of stations
